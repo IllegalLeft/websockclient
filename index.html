@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="style.css">
 <base target="_blank">
 
-<title>Minimal Websocket JavaScript Client</title></head>
+<title>JustAnotherMUSH Websocket JavaScript Client</title></head>
 
 <body onLoad="input.focus()"
       onUnload="conn.sendText('QUIT'); setTimeout(conn.close, 1000);"
@@ -14,13 +14,14 @@
 <div id="terminal">
   <div id="output" class="ansi-37 ansi-40"></div>
   <div id="quicklinks" class="ansi-1-34 ansi-40">
-    <a onClick='sendCommand("who");'>WHO</a>
-    <a onClick='sendCommand("look");'>LOOK</a>
-    <a onClick='sendCommand("inventory");'>INVENTORY</a>
-    <a onClick='sendCommand("@mail");'>MAIL</a>
-    <a onClick='sendCommand("+bb");'>BBOARD</a>
-    <a onClick='sendCommand("home");'>HOME</a>
-    <a onClick="output.clear(); cmdprompt.clear();">CLEAR OUTPUT</a></div>
+    <a class="quicklink" onClick='sendCommand("who");'>WHO</a>
+    <a class="quicklink" onClick='sendCommand("look");'>LOOK</a>
+    <a class="quicklink" onClick='sendCommand("inventory");'>INVENTORY</a>
+    <a class="quicklink" onClick='sendCommand("@mail");'>MAIL</a>
+    <a class="quicklink" onClick='sendCommand("home");'>HOME</a>
+    <a class="quicklink" onClick="output.clear(); cmdprompt.clear();">CLEAR OUTPUT</a>
+    <a class="quicklink" onClick='sendCommand("ex me");'>&#9786;abc</a>
+  </div>
   <div id="prompt" class="ansi-37 ansi-40"></div>
   <textarea id="input" autocomplete="off" autofocus></textarea>
 </div>
@@ -28,7 +29,7 @@
 <script type="text/javascript" src="wsclient.js"></script>
 <script type="text/javascript">
   //var serverAddress = window.location.hostname;
-  var serverAddress = "grapenut.org";
+  var serverAddress = "completelynonintegrable.ca";
   var serverSSL = window.location.protocol == "https:";
   var serverProto = serverSSL ? "wss://" : "ws://";
   var serverPort = serverSSL ? '4202' : '4201';
