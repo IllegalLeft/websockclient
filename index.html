@@ -29,15 +29,11 @@
 <script type="text/javascript" src="wsclient.js"></script>
 <script type="text/javascript">
   //var serverAddress = window.location.hostname;
-<<<<<<< HEAD
   var serverAddress = "completelynonintegrable.ca";
-=======
-  var serverAddress = "node.grapenut.org";
->>>>>>> 9e3aba2ae66910ab0713280ce86ee341e54ffa2e
   var serverSSL = window.location.protocol == "https:";
   var serverProto = serverSSL ? "wss://" : "ws://";
   var serverPort = serverSSL ? '4202' : '4201';
-  
+
   var customUrl = window.location.search.substring(1) ? window.location.search.substring(1) : serverAddress + ":" + serverPort;
 
   // The connection URL is ws://host:port/wsclient (or wss:// for SSL connections)
@@ -62,7 +58,7 @@
       output.appendMessage('logMessage', '%% Reconnecting to server...');
     }
   }
-  
+
   // just log a standard message on these socket status events
   conn.onOpen = function (evt) { output.appendMessage('logMessage', '%% Connected.'); };
   conn.onError = function (evt) { output.appendMessage('logMessage', '%% Connection error!'); console.log(evt); };
@@ -73,7 +69,7 @@
   conn.onHTML = function (html) { output.appendHTML(html); };
   conn.onPueblo = function (html) { output.appendPueblo(html); };
   conn.onPrompt = function (text) { cmdprompt.clear(); cmdprompt.appendText(text + '\r\n'); };
-  
+
   // handle incoming JSON objects. requires server specific implementation
   conn.onObject = function (obj) { console.log('unhandled JSON object' + obj); };
 
@@ -82,20 +78,20 @@
 
   // enter key passthrough from WSClient.pressKey
   input.onEnter = function(cmd) { sendCommand(cmd); };
-  
+
   // escape key passthrough from WSClient.pressKey
   input.onEscape = function () { this.clear(); };
-  
+
   // input key event callbacks. here we show the defaults
   // provided by WSClient.pressKey and WSClient.releaseKey
   // input.onKeyDown = function(e) { WSClient.pressKey(this, e); };
   // input.onKeyUp = function(e) { WSClient.releaseKey(this, e); };
-  
+
   // which keys are used for cycling through command history?
   // here we show the default keys, ctrl+p and ctrl+n
   // input.keyCycleForward = function(key) { return (key.code === 78 && key.ctrl); }; // ctrl+n
   // input.keyCycleBackward = function(key) { return (key.code === 80 && key.ctrl); }; // ctrl+p
-  
+
 </script>
 
 </body>
